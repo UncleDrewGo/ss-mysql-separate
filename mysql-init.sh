@@ -8,7 +8,7 @@ else
 fi
 
 echo "create ss-panel database, user, password"
-mysql -uroot -p'pw123456' -e "CREATE DATABASE sspanel character SET utf8; CREATE user 'ssuser'@'localhost' IDENTIFIED BY 'sspasswd'; GRANT ALL privileges ON sspanel.* TO 'ssuser'@'localhost'; FLUSH PRIVILEGES;"
+mysql -uroot -p'pw123456' -e "CREATE DATABASE sspanel character SET utf8; CREATE user 'ssuser'@'%' IDENTIFIED BY 'sspasswd'; GRANT ALL privileges ON sspanel.* TO 'ssuser'@'%'; FLUSH PRIVILEGES;"
 
 echo "input shadowsocks sql init database"
 mysql -u ssuser -psspasswd sspanel < /opt/shadowsocks.sql
