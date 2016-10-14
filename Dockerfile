@@ -18,6 +18,7 @@ RUN apt-get -y install supervisor
 
 ADD shadowsocks.sql /opt/shadowsocks.sql
 ADD db-160212.sql /opt/db-160212.sql
+ADD my.cnf /etc/mysql/my.cnf
 ADD mysql-init.sh /opt/mysql-init.sh
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 
