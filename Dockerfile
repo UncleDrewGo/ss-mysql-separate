@@ -15,15 +15,16 @@ RUN echo "mysql-server-5.6 mysql-server/root_password password pw123456" | sudo 
 RUN echo "mysql-server-5.6 mysql-server/root_password_again password pw123456" | sudo debconf-set-selections
 RUN apt-get -y install mysql-server-5.6
 RUN apt-get -y install supervisor
-
-ADD shadowsocks.sql /opt/shadowsocks.sql
-ADD db-160212.sql /opt/db-160212.sql
+RUN mkdir /opt/ss-mysql
+ADD shadowsocks.sql /opt/ss-mysql/shadowsocks.sql
+ADD db-160212.sql /opt/ss-mysql/db-160212.sql
 ADD my.cnf /etc/mysql/my.cnf
-ADD mysql-init.sh /opt/mysql-init.sh
+ADD mysql-init.sh /opt/ss-mysql/mysql-init.sh
+ADD mysql-backup.sh /opt/ss-mysql/mysql-backup.sh
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 
 RUN service mysql start
-RUN /bin/bash /opt/mysql-init.sh
+RUN /bin/bash /opt/ss-mysql/mysql-init.sh
 
 RUN apt-get clean && apt-get autoclean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 

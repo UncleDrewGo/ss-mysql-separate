@@ -11,7 +11,7 @@ echo "create ss-panel database, user, password"
 mysql -uroot -p'pw123456' -e "CREATE DATABASE sspanel character SET utf8; CREATE user 'ssuser'@'%' IDENTIFIED BY 'sspasswd'; GRANT ALL privileges ON sspanel.* TO 'ssuser'@'%'; FLUSH PRIVILEGES;"
 
 echo "input shadowsocks sql init database"
-mysql -u ssuser -psspasswd sspanel < /opt/shadowsocks.sql
+mysql -u ssuser -psspasswd sspanel < /opt/ss-mysql/shadowsocks.sql
 
 echo "input ss-panel sql into database"
-mysql -u ssuser -psspasswd sspanel < /opt/db-160212.sql
+mysql -u ssuser -psspasswd sspanel < /opt/ss-mysql/db-160212.sql
