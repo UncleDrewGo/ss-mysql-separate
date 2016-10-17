@@ -21,6 +21,7 @@ ADD db-160212.sql /opt/ss-mysql/db-160212.sql
 ADD my.cnf /etc/mysql/my.cnf
 ADD mysql-init.sh /opt/ss-mysql/mysql-init.sh
 ADD mysql-backup.sh /opt/ss-mysql/mysql-backup.sh
+ADD mysql-import.sh /opt/ss-mysql/mysql-import.sh
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 
 RUN service mysql start
